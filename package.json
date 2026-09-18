@@ -1,13 +1,9 @@
 {
-  "name": "birthday-for-her",
+  "name": "birthday-for-chandni",
   "version": "1.0.0",
-  "description": "A cinematic, responsive birthday surprise website with memories, a love letter, music, and an interactive final gift reveal.",
-  "main": "server.js",
+  "description": "A cinematic, interactive birthday surprise story for Chandni (Khushu).",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js"
-  },
-  "keywords": ["birthday", "gift", "romantic", "react", "website"],
-  "author": "",
-  "license": "MIT"
+  }
 }
