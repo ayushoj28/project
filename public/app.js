@@ -11,14 +11,18 @@ const { useState, useEffect, useRef } = ReactObj || {};
 const html = htmObj ? htmObj.bind(ReactObj.createElement) : () => null;
 
 const C = {
-  song: "Varoon - A Romantic Melody",
+  name: "Chandni",
+  nickname: "Khushu",
+  petName1: "bby gurl",
+  petName2: "khuchu puu",
+  song: "A Romantic Soundtrack for Chandni",
   audio: "./music/song.mp3",
   letter: [
-    "I don't know if words can ever completely explain how special you are to me.",
-    "From the way you smile to the warmth in your voice, you have this magical way of making ordinary days feel unforgettable.",
-    "Thank you for being my favorite notification, my comfort person, and my happiest reason to smile.",
-    "Happy Birthday, my favorite person in the entire universe. ❤️",
-    "— Always and truly yours."
+    "Chandni, my sweet, adorable khuchu pu bby gurl,",
+    "I don’t think you realize just how much my heart lights up every single time your name pops up on my screen or whenever you cross my mind. Just like the moonlight your name carries, you have this gentle, magical way of making even the most ordinary days feel extra bright, warm, and full of joy. You are my little ray of sunshine wrapped in the softest, sweetest moonbeams.",
+    "Being with you is like having a constant reason to smile. From your adorable little habits to the way your laugh instantly brightens up my whole mood, everything about you is my favorite thing. You’re my absolute comfort, my safe haven, and my favorite person to dream about. When I'm tired, thinking of you gives me energy. When I'm stressed, your memory brings me instant peace. You are, quite literally, my cozy happy place in human form.",
+    "I catch myself thinking about you at the most random times of the day—wondering what you’re doing, wishing I could pull you into a big squeeze, or just hoping you’re smiling that precious smile of yours. You have completely taken over my heart, and honestly? I wouldn't have it any other way.",
+    "Thank you for being so endlessly cute, for filling my life with sweet giggles, and for being the most wonderful part of my world. I love you to the moon, the stars, and all the way back again, my gorgeous Chandni."
   ]
 };
 
@@ -121,6 +125,11 @@ function Penguin({ mood = "", small = false }) {
         <span className="tear splash-left">💦</span>
         <span className="tear splash-right">💦</span>
       </div>
+      <div className="penguin-happy-hearts">
+        <span className="happy-heart h1">💖</span>
+        <span className="happy-heart h2">✨</span>
+        <span className="happy-heart h3">🥰</span>
+      </div>
       <div className="penguin">
         <div className="penguin-head">
           <div className="penguin-blush left"></div>
@@ -191,7 +200,7 @@ function Layout({ children, page }) {
         ${children}
       </main>
       <footer className="brand-mark">
-        <span>made with ❤️ just for you</span>
+        <span>made with ❤️ just for Chandni (Khushu)</span>
       </footer>
     </div>
   `;
@@ -200,64 +209,84 @@ function Layout({ children, page }) {
 function Welcome() {
   return html`
     <section className="hero-page">
-      <div className="eyebrow">✨ A SPECIAL SURPRISE ✨</div>
-      <h1>Hey You... <span>❤️</span></h1>
-      <p className="subtitle">I crafted a little interactive world to make your day smile...</p>
+      <div className="eyebrow">✨ A SPECIAL SURPRISE FOR CHANDNI ✨</div>
+      <h1>Hey Khushu... <span>❤️</span></h1>
+      <p className="subtitle">I crafted a little magical world for my favorite bby gurl, my sweet khuchu puu...</p>
       <div className="penguin-stage">
         <${Penguin} mood="waving" />
       </div>
       <button className="btn glow" onClick=${() => go("penguin")}>
-        Open Your Surprise 💌
+        Open Your Surprise, Chandni 💌
       </button>
-      <p className="tiny-promise">Promise me you'll stay till the end? 🥺</p>
+      <p className="tiny-promise">Promise me you'll stay till the end, khuchu puu? 🥺</p>
     </section>
   `;
 }
 
 function PenguinPage() {
   const [n, setN] = useState(0);
+  const [isHappy, setIsHappy] = useState(false);
+
   const messages = [
-    "Wait... Why did you come here? 👀",
-    "Did you really just click NO? Look at him... 🥺💧",
-    "He's literally crying his little heart out! 😭💔",
-    "*Inconsolable penguin sobbing noises* 🐧🌊",
-    "Please don't break his tiny penguin heart! Say YES! 🥺❤️"
+    "Are you ready for your birthday surprise, my sweet Chandni? 👀",
+    "Khushu, did you really just tap NO? Look at him... 🥺💧",
+    "bby gurl, he's literally crying his little heart out! 😭💔",
+    "*Inconsolable penguin sobbing noises for khuchu puu* 🐧🌊",
+    "Please don't break his tiny penguin heart, Chandni! Say YES! 🥺❤️"
   ];
-  const msg = messages[Math.min(n, messages.length - 1)];
+  const msg = isHappy 
+    ? "Yaaay!! Khushu made the penguin super happy! 🥰💖 Loading your surprise..." 
+    : messages[Math.min(n, messages.length - 1)];
+
+  function handleYes() {
+    setIsHappy(true);
+    setTimeout(() => {
+      go("choose");
+    }, 900);
+  }
 
   return html`
     <section className="center-page">
-      <div className="eyebrow">${n > 0 ? "😭 PENGUIN IS HEARTBROKEN 💔" : "THE PENGUIN INQUISITION 🐧"}</div>
-      <h2>${n > 0 ? "You Made Him Cry! 🥺" : "Wait... Why Did You Come Here? <em>👀</em>"}</h2>
-      <p className="soft-copy dynamic-msg">${msg}</p>
-      <div className="penguin-stage">
-        <${Penguin} mood=${n > 0 ? "crying" : "confused"} />
+      <div className="eyebrow">
+        ${isHappy ? "🥰 PENGUIN IS OVERJOYED! 🎉" : (n > 0 ? "😭 PENGUIN IS HEARTBROKEN 💔" : "THE PENGUIN ASKS KHUSHU 🐧")}
       </div>
+      <h2>
+        ${isHappy ? "Yay Khushu! 🥰✨" : (n > 0 ? "You Made Him Cry, Khushu! 🥺" : "Wait... Why Did You Come Here, bby gurl? <em>👀</em>")}
+      </h2>
+      <p className="soft-copy dynamic-msg">${msg}</p>
+      
+      <div className="penguin-stage">
+        <${Penguin} mood=${isHappy ? "happy" : (n > 0 ? "crying" : "confused")} />
+      </div>
+
       <div className="choice-row">
         <button 
-          className="btn yes pulse" 
-          onClick=${() => go("choose")}
+          className=${"btn yes pulse " + (isHappy ? "celebrating-yes" : "")} 
+          onClick=${handleYes}
           style=${{
             transform: `scale(${Math.min(1.35, 1 + n * 0.08)})`,
             zIndex: 10
           }}
         >
-          ${n > 0 ? "Okay Fine, YES! ❤️" : "YES I WANT TO SEE ❤️"}
+          ${isHappy ? "Yay Khushu! 🥰❤️" : (n > 0 ? "Okay Fine, YES! ❤️" : "YES I WANT TO SEE ❤️")}
         </button>
-        <button 
-          className="btn no" 
-          onClick=${() => setN(prev => prev + 1)}
-          style=${n > 0 ? {
-            transform: `scale(${Math.max(0.65, 1 - n * 0.08)})`,
-            opacity: Math.max(0.4, 1 - n * 0.12)
-          } : {}}
-        >
-          ${n === 0 ? "NO 😏" : n === 1 ? "Still No 😢" : n === 2 ? "No (Monster) 🙈" : "No 💔"}
-        </button>
+        ${!isHappy ? html`
+          <button 
+            className="btn no" 
+            onClick=${() => setN(prev => prev + 1)}
+            style=${n > 0 ? {
+              transform: `scale(${Math.max(0.65, 1 - n * 0.08)})`,
+              opacity: Math.max(0.4, 1 - n * 0.12)
+            } : {}}
+          >
+            ${n === 0 ? "NO 😏" : n === 1 ? "Still No 😢" : n === 2 ? "No (Monster) 🙈" : "No 💔"}
+          </button>
+        ` : null}
       </div>
-      ${n > 0 ? html`
+      
+      ${n > 0 && !isHappy ? html`
         <p className="cry-counter-hint">
-          Tears shed: <strong>${n * 42} 💧</strong> • Click YES to cheer him up! ❤️
+          Tears shed: <strong>${n * 42} 💧</strong> • Click YES to cheer him up, Khushu! ❤️
         </p>
       ` : null}
     </section>
@@ -267,16 +296,16 @@ function PenguinPage() {
 function Choose() {
   const [selected, setSelected] = useState(-1);
   const companions = [
-    ["shy", "Shy Penguin", "A little quiet, but secretly overflowing with love. 🥺"],
-    ["romantic", "Romantic Penguin", "Good choice... I have so many sweet things to tell you. ❤️"],
-    ["crazy", "Playful Penguin", "Unlimited chaos, giggles, and cuddles guaranteed! 😂"]
+    ["shy", "Shy Penguin", "A little quiet, but secretly head over heels in love with Khushu. 🥺"],
+    ["romantic", "Romantic Penguin", "Good choice, Chandni... I have so many sweet confessions for you. ❤️"],
+    ["crazy", "Playful Penguin", "Unlimited giggles, chaos, and warm cuddles for khuchu puu! 🥰"]
   ];
 
   return html`
     <section className="content-page">
-      <div className="eyebrow">CHAPTER 3 • CHOOSE YOUR COMPANION</div>
-      <h2>Choose a Penguin <em>🐧</em></h2>
-      <p className="soft-copy">Pick your little buddy to guide you through the story.</p>
+      <div className="eyebrow">CHAPTER 3 • CHOOSE FOR KHUSHU</div>
+      <h2>Pick Your Companion, Chandni <em>🐧</em></h2>
+      <p className="soft-copy">Pick your little buddy to guide you through your story, bby gurl.</p>
       <div className="penguin-grid">
         ${companions.map((x, i) => html`
           <button 
@@ -295,10 +324,10 @@ function Choose() {
       </div>
       ${selected >= 0 ? html`
         <button className="btn glow mt-6" onClick=${() => go("birthday")}>
-          Continue to The Big Moment →
+          Continue to Chandni's Big Moment →
         </button>
       ` : html`
-        <p className="select-prompt">Tap any penguin to continue ✨</p>
+        <p className="select-prompt">Tap any penguin to continue, khuchu puu ✨</p>
       `}
     </section>
   `;
@@ -323,9 +352,9 @@ function Birthday() {
   return html`
     <section className="birthday-page">
       <div className="eyebrow">🎉 THE CELEBRATION MOMENT 🎉</div>
-      <h1 className="birthday-title">HAPPY BIRTHDAY <span>❤️</span></h1>
+      <h1 className="birthday-title">HAPPY BIRTHDAY CHANDNI <span>❤️</span></h1>
       <p className="birthday-line">
-        Today isn't just another day... it is the day the world was blessed with you.
+        Today isn't just another day... it's the day the universe blessed the world with my precious Khushu, my sweet bby gurl.
       </p>
       <div className="celebration-stage">
         <div className="confetti-container">
@@ -353,10 +382,12 @@ function Birthday() {
         </button>
       </div>
       <p className=${"tap-hint " + (wished ? "wished" : "")}>
-        ${wished ? "✨ Wish made! May all your dreams come true ❤️ ✨" : "✨ Tap the candle flame to make your birthday wish! ✨"}
+        ${wished 
+          ? "✨ Wish made for my sweet Chandni! May all your dreams come true ❤️ ✨" 
+          : "✨ Tap the candle flame to make your birthday wish, khuchu puu! ✨"}
       </p>
       <button className="btn glow" onClick=${() => go("story")}>
-        Read Our Story →
+        Read Our Story, Khushu →
       </button>
     </section>
   `;
@@ -365,19 +396,19 @@ function Birthday() {
 function Story() {
   const [openCard, setOpenCard] = useState(0);
   const stories = [
-    ["How It Started", "Somewhere between an ordinary day and an unexpected smile, our little story began to unfold."],
-    ["First Conversation", "One conversation became another... and soon I was checking my phone just hoping to see your name."],
-    ["Favorite Memory", "The quiet, effortless moments when time stops and it's just the warmth of you being there."],
-    ["That Crazy Moment 😂", "The unfiltered laughs, silly banter, and playful chaos that only the two of us understand."],
-    ["Why You're Special", "Because you are unapologetically, beautifully YOU. No perfection needed—just your genuine heart. ❤️"]
+    ["How It Started", "Somewhere between an ordinary day and an unexpected smile, my story with Chandni began to unfold."],
+    ["First Conversation", "One conversation with Khushu became another... and soon I was eagerly checking my phone just hoping to see your notification, bby gurl."],
+    ["Favorite Memory", "The quiet, effortless moments when time stops and it's just the warmth of you being there, my sweet khuchu puu."],
+    ["That Crazy Moment 🥰", "The unfiltered laughs, silly banter, and playful teasing that only you and I understand, my adorable Khushu."],
+    ["Why Chandni is Special", "Because you are unapologetically, beautifully YOU. You light up my life like gentle moonlight, my darling Chandni. ❤️"]
   ];
-  const icons = ["🌷", "💌", "✨", "😂", "💖"];
+  const icons = ["🌷", "💌", "✨", "🥰", "💖"];
 
   return html`
     <section className="content-page">
-      <div className="eyebrow">OUR SCRAPBOOK • MEMORIES</div>
-      <h2>Our Little Story <em>❤️</em></h2>
-      <p className="soft-copy">Tap each chapter of our journey together.</p>
+      <div className="eyebrow">OUR SCRAPBOOK • FOR MY BBY GURL</div>
+      <h2>Our Story, Chandni <em>❤️</em></h2>
+      <p className="soft-copy">Tap each chapter of our journey together, Khushu.</p>
       <div className="memory-grid">
         ${stories.map((story, i) => html`
           <button 
@@ -397,7 +428,7 @@ function Story() {
         `)}
       </div>
       <button className="btn glow mt-6" onClick=${() => go("love")}>
-        There's More I Want to Say ❤️
+        There's More I Want to Say to Khushu ❤️
       </button>
     </section>
   `;
@@ -406,19 +437,19 @@ function Story() {
 function Love() {
   const [openLove, setOpenLove] = useState(0);
   const confessions = [
-    ["Your Smile 😊", "It lights up everything around you and effortlessly melts away any bad day."],
-    ["Your Voice ❤️", "Hearing you talk is genuinely my favorite sound in the world."],
-    ["Your Little Habits 🥺", "The tiny, cute things you do without even realizing... I notice every single one."],
-    ["The Way You Care", "Your gentle heart and kindness make everyone around you feel cherished."],
-    ["Your Laugh 😂", "The purest, sweetest sound—it's completely contagious."],
-    ["Simply... YOU 💖", "There are a million reasons, but the biggest one is simply who you are."]
+    ["Chandni's Smile 😊", "It lights up everything around you and effortlessly melts away any bad day, my bby gurl."],
+    ["Khushu's Voice ❤️", "Hearing you talk is genuinely my favorite sound in the world, sweet khuchu puu."],
+    ["Your Little Habits 🥺", "The tiny, cute things you do without even realizing... I cherish every single one of them, Chandni."],
+    ["The Way You Care 🌸", "Your gentle heart and kindness make everyone around you feel cherished, especially me."],
+    ["Your Sweet Laugh 🥰", "The purest, sweetest sound—it instantly brightens up my whole world."],
+    ["Simply... My Khushu 💖", "There are a million reasons, but the biggest one is simply who you are, my precious Chandni."]
   ];
 
   return html`
     <section className="content-page">
       <div className="eyebrow">CONFESSIONS FROM MY HEART</div>
-      <h2>Things I Love About You <em>❤️</em></h2>
-      <p className="soft-copy">Tap every heart to unlock a confession.</p>
+      <h2>Why I Adore Chandni <em>❤️</em></h2>
+      <p className="soft-copy">Tap every heart to unlock a confession for my bby gurl, Khushu.</p>
       <div className="love-grid">
         ${confessions.map((x, i) => html`
           <button 
@@ -435,7 +466,7 @@ function Love() {
         `)}
       </div>
       <button className="btn glow mt-6" onClick=${() => go("hug")}>
-        Come Here... 🥺
+        Come Here, Khushu... 🥺
       </button>
     </section>
   `;
@@ -446,9 +477,9 @@ function Hug() {
 
   return html`
     <section className="hug-page">
-      <div className="eyebrow">WARMTH & CUDDLES</div>
-      <h2>Come Here... <em>🥺❤️</em></h2>
-      <p className="soft-copy">Because some hugs should never have to wait.</p>
+      <div className="eyebrow">WARMTH & CUDDLES FOR BBY GURL</div>
+      <h2>Come Here, Chandni... <em>🥺❤️</em></h2>
+      <p className="soft-copy">Because tight cuddles for khuchu puu should never have to wait.</p>
       <div className=${"hug-stage " + (hugged ? "is-hugging" : "")}>
         <div className="hugger left">
           <${Penguin} mood=${hugged ? "hugging" : "romantic"} />
@@ -464,11 +495,11 @@ function Hug() {
       </div>
       <div className="hug-controls">
         <button className="btn glow" onClick=${() => setHugged(prev => !prev)}>
-          ${hugged ? "One More Hug 🤗" : "Send Me A Warm Hug 🫂"}
+          ${hugged ? "One More Big Squeeze for Khushu 🤗" : "Send Chandni A Warm Hug 🫂"}
         </button>
       </div>
       <button className="text-btn" onClick=${() => go("music")}>
-        Listen to our soundtrack →
+        Listen to our soundtrack, bby gurl →
       </button>
     </section>
   `;
@@ -526,9 +557,9 @@ function Music() {
 
   return html`
     <section className="music-page">
-      <div className="eyebrow">OUR SOUNDTRACK 🎵</div>
-      <h2>This Reminds Me Of You <em>🎶</em></h2>
-      <p className="soft-copy">Press play, turn the volume up, and enjoy this moment ❤️</p>
+      <div className="eyebrow">OUR SOUNDTRACK FOR CHANDNI 🎵</div>
+      <h2>This Reminds Me Of Khushu <em>🎶</em></h2>
+      <p className="soft-copy">Press play, turn the volume up, and enjoy this melody dedicated to my bby gurl ❤️</p>
       
       <div className=${"player-card " + (isPlaying ? "playing" : "")}>
         <div className="vinyl-wrap">
@@ -538,8 +569,8 @@ function Music() {
         </div>
         
         <div className="player-meta">
-          <strong className="song-title">${C.song}</strong>
-          <span className="song-sub">A sweet soundtrack dedicated to you</span>
+          <strong className="song-title">Chandni's Melody (Khushu)</strong>
+          <span className="song-sub">A sweet soundtrack dedicated to my bby gurl</span>
         </div>
 
         <div className="player-controls">
@@ -571,11 +602,11 @@ function Music() {
       <audio ref=${audioRef} src=${C.audio} loop preload="metadata"></audio>
       
       <p className="audio-note">
-        🎵 <em>Music box audio • Soft melodies for your special day</em>
+        🎵 <em>Music box audio • Soft melodies for Chandni's special day</em>
       </p>
 
       <button className="btn glow mt-6" onClick=${() => go("letter")}>
-        Open My Letter 💌
+        Open My Letter, Chandni 💌
       </button>
     </section>
   `;
@@ -587,23 +618,23 @@ function Letter() {
   return html`
     <section className="letter-page">
       <div className="eyebrow">A PERSONAL LETTER • FROM MY HEART</div>
-      <h2>One Last Thing... <em>❤️</em></h2>
-      <p className="soft-copy">I wrote down a few words that I truly mean.</p>
+      <h2>For My Chandni... <em>❤️</em></h2>
+      <p className="soft-copy">Every single word here is straight from my heart to yours, Khushu.</p>
       
       <div className=${"envelope-wrapper " + (opened ? "opened" : "")} onClick=${() => setOpened(true)}>
         <div className="envelope-back"></div>
         <div className="letter-paper">
-          <div className="letter-header">Dearest Birthday Girl, ❤️</div>
+          <div className="letter-header">Dearest Chandni, my sweet khuchu puu ❤️</div>
           <div className="letter-lines">
             ${C.letter.map((paragraph, i) => html`
               <p key=${i} className="letter-p">${paragraph}</p>
             `)}
           </div>
-          <div className="letter-seal-stamp">Forever & Always ❤️</div>
+          <div className="letter-seal-stamp">Forever & Always Yours, Khushu's ❤️</div>
         </div>
         <div className="envelope-front">
           <div className="wax-seal">💌</div>
-          <span className="envelope-tap-msg">${opened ? "" : "Tap to open your letter ✨"}</span>
+          <span className="envelope-tap-msg">${opened ? "" : "Tap to open your letter, bby gurl ✨"}</span>
         </div>
       </div>
 
@@ -612,7 +643,7 @@ function Letter() {
           className="btn glow" 
           onClick=${() => opened ? go("final") : setOpened(true)}
         >
-          ${opened ? "One Final Surprise ✨" : "Open My Letter 💌"}
+          ${opened ? "One Final Surprise For Chandni ✨" : "Open My Letter, Khushu 💌"}
         </button>
       </div>
     </section>
@@ -628,10 +659,10 @@ function Final() {
         <div className="giant-heart pulse">❤️</div>
         <${Penguin} mood="romantic" />
       </div>
-      <div className="eyebrow">THE BEGINNING OF ANOTHER BEAUTIFUL YEAR</div>
-      <h1 className="final-title">Happy Birthday, My Favorite Person <span>❤️</span></h1>
+      <div className="eyebrow">HAPPY BIRTHDAY TO MY MOONLIGHT ✨</div>
+      <h1 className="final-title">Happy Birthday, My Gorgeous Chandni <span>❤️</span></h1>
       <p className="final-message">
-        May this year bring you endless laughter, peace, adventures, and all the love you deserve.
+        May this year bring my sweet Khushu, my precious bby gurl khuchu puu, endless laughter, peace, magical moments, and all the love in the universe.
       </p>
       <div className="final-flowers">
         <span>🌷</span>
@@ -641,7 +672,7 @@ function Final() {
         <span>🌷</span>
       </div>
       <button className="btn glow restart-btn" onClick=${() => go("welcome")}>
-        Replay Our Story ↻
+        Replay Our Story, Khushu ↻
       </button>
     </section>
   `;

@@ -794,6 +794,89 @@ h1 span, h2 em {
   font-weight: 600;
 }
 
+/* --- Happy Penguin Mood --- */
+.penguin-happy-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 10;
+}
+
+.penguin-wrap.happy .penguin-happy-hearts {
+  opacity: 1;
+}
+
+.penguin-wrap.happy .happy-heart {
+  position: absolute;
+  font-size: 20px;
+  animation: floatHappyHeart 1.2s ease-in-out infinite alternate;
+}
+
+.penguin-wrap.happy .happy-heart.h1 {
+  top: -15px;
+  left: 10px;
+  animation-delay: 0s;
+}
+
+.penguin-wrap.happy .happy-heart.h2 {
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 0.3s;
+}
+
+.penguin-wrap.happy .happy-heart.h3 {
+  top: -15px;
+  right: 10px;
+  animation-delay: 0.6s;
+}
+
+@keyframes floatHappyHeart {
+  0% { transform: translateY(0) scale(0.9) rotate(-10deg); opacity: 0.7; }
+  100% { transform: translateY(-12px) scale(1.25) rotate(10deg); opacity: 1; filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.8)); }
+}
+
+.penguin-wrap.happy .penguin {
+  animation: happyJump 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite alternate;
+}
+
+@keyframes happyJump {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-16px) scale(1.06) rotate(3deg); }
+}
+
+.penguin-wrap.happy .penguin-wing.left {
+  animation: happyWingLeft 0.3s ease-in-out infinite alternate;
+}
+
+.penguin-wrap.happy .penguin-wing.right {
+  animation: happyWingRight 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes happyWingLeft {
+  0% { transform: rotate(90deg); }
+  100% { transform: rotate(140deg); }
+}
+
+@keyframes happyWingRight {
+  0% { transform: rotate(-90deg); }
+  100% { transform: rotate(-140deg); }
+}
+
+.penguin-wrap.happy .penguin-blush {
+  background: #ec4899;
+  transform: scale(1.6);
+  opacity: 1;
+}
+
+.celebrating-yes {
+  background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%) !important;
+  box-shadow: 0 0 25px rgba(236, 72, 153, 0.8) !important;
+  animation: pulseHeart 0.6s infinite alternate !important;
+}
+
 @keyframes pulseHeart {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.25); }
