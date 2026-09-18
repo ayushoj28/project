@@ -1,9 +1,10 @@
 {
   "name": "birthday-for-chandni",
   "version": "1.0.0",
+  "private": true,
   "description": "A cinematic, interactive birthday surprise story for Chandni (Khushu).",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node dev-server.js",
+    "dev": "node dev-server.js"
   }
 }
