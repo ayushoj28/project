@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fdf2f8">
+  <meta name="description" content="A cinematic, interactive birthday surprise story with cute animated penguins, memories, heartfelt love letters, and music.">
+  <title>A Birthday Story For You ❤️</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./theme.css">
+  
+  <!-- Core Libraries -->
+  <script src="./vendor/react.js"></script>
+  <script src="./vendor/react-dom.js"></script>
+  <script src="./vendor/htm.js"></script>
+  
+  <!-- CDN Fallbacks in case local scripts fail -->
+  <script>
+    if (!window.React) {
+      document.write('<script src="https://unpkg.com/react@18/umd/react.production.min.js"><\/script>');
+    }
+    if (!window.ReactDOM) {
+      document.write('<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"><\/script>');
+    }
+    if (!window.htm) {
+      document.write('<script src="https://unpkg.com/htm@3.1.1/dist/htm.umd.js"><\/script>');
+    }
+  </script>
+</head>
+<body>
+  <div id="root">
+    <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans', sans-serif; color: #db2777; background: #fff1f8; text-align: center; padding: 20px;">
+      <div style="font-size: 48px; animation: pulse 1.5s infinite alternate;">❤️</div>
+      <h2 style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 28px; margin: 16px 0 8px; color: #3b1d38;">Preparing Your Birthday Surprise...</h2>
+      <p style="color: #7e5c7a; font-size: 15px;">Loading the magic ✨</p>
+    </div>
+  </div>
+  
+  <script src="./app.js"></script>
+</body>
+</html>
