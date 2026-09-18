@@ -396,13 +396,28 @@ function Birthday() {
 function Story() {
   const [openCard, setOpenCard] = useState(0);
   const stories = [
-    ["How It Started", "Somewhere between an ordinary day and an unexpected smile, my story with Chandni began to unfold."],
-    ["First Conversation", "One conversation with Khushu became another... and soon I was eagerly checking my phone just hoping to see your notification, bby gurl."],
-    ["Favorite Memory", "The quiet, effortless moments when time stops and it's just the warmth of you being there, my sweet khuchu puu."],
-    ["That Crazy Moment 🥰", "The unfiltered laughs, silly banter, and playful teasing that only you and I understand, my adorable Khushu."],
-    ["Why Chandni is Special", "Because you are unapologetically, beautifully YOU. You light up my life like gentle moonlight, my darling Chandni. ❤️"]
+    [
+      "How It Started",
+      "It all began with a simple, random add on Snapchat, totally unaware that a single tap would bring the most special person into my life. What started as an unexpected notification turned into the best unexpected surprise ever."
+    ],
+    [
+      "First Conversation",
+      "What started as casual messages quickly turned into deep chats about our future and life goals. The sweetest part? She mentioned wanting to learn web development from me—and honestly, teaching my favorite girl how to code has been the best perk ever."
+    ],
+    [
+      "Favorite Memory",
+      "Every little moment with my Khuchu Pu feels like a core memory, but those late-night conversations where we just lose track of time, laughing at silly jokes and talking about everything under the sun, hold a special place in my heart."
+    ],
+    [
+      "That Crazy Moment",
+      "The moments when we completely forget about the rest of the world, joking around, teasing each other, and sharing those unexpected sweet bursts of laughter that make me realize just how effortlessly fun life is with her."
+    ],
+    [
+      "Why Khuchu Pu is Special",
+      "Khuchu Pu isn't just incredible—she’s my whole heart. She brings warmth, comfort, and so much sweetness into my life without even trying. Her laugh brightens up my worst days, and her presence makes everything feel infinitely better."
+    ]
   ];
-  const icons = ["🌷", "💌", "✨", "🥰", "💖"];
+  const icons = ["🌷", "💖", "✨", "🥳", "💖"];
 
   return html`
     <section className="content-page">
